@@ -9,7 +9,7 @@ class Scraper
   def get_page
 
     doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
-binding.pry
+
     # doc.css(".post").each do |post|
     #   course = Course.new
     #   course.title = post.css("h2").text
@@ -24,10 +24,10 @@ binding.pry
     end
 
     def make_podcasts
-      self.get_podcasts.each do |post|
+      self.get_podcasts.each do |p|
         podcast = Podcast.new
-        podcast.position = post.css(".numberImage").text.gsub(/\t/, '').strip
-        podcast.summary = post.css("p").text.strip
+        podcast.position = p.css(".numberImage").text.gsub(/\t/, '').strip
+        podcast.summary = p.css("p").text.strip
       end
     end
 
@@ -41,4 +41,4 @@ binding.pry
     end
   end
 
-  Scraper.new.print_podcasts
+binding.pry
