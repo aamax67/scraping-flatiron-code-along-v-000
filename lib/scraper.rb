@@ -34,7 +34,7 @@ class Scraper
     def print_podcasts
       self.make_podcasts
       Podcast.all.each do |podcast|
-        if course.title
+        if podcast.name
           puts "Name: #{podcast.name}"  "Position: #{podcast.position}"
         end
       end
