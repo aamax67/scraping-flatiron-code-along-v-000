@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-require_relative './course.rb'
+require_relative './podcast.rb'
 
 class Scraper
 
@@ -19,26 +19,23 @@ binding.pry
     #   binding.pry
     end
 
-    def get_courses
-      self.get_page.css(".post")
+    def get_podcasts
+      self.get_page.css(".allTopPodcasts")
     end
 
-    def make_courses
-      self.get_courses.each do |post|
-        course = Course.new
-        course.title = post.css("h2").text
-        course.schedule = post.css(".date").text
-        course.description = post.css("p").text
+    def make_podcasts
+      self.get_podcasts.each do |post|
+        podcast = Podcast.new
+        podcast.position = pod.css(".numberImage").text.gsub(/\t/, '').strip
+        podcast.summary = pod.css("p").text.strip
       end
     end
 
-    def print_courses
-      self.make_courses
-      Course.all.each do |course|
+    def print_podcasts
+      self.make_podcasts
+      Podcast.all.each do |podcast|
         if course.title
-          puts "Title: #{course.title}"
-          puts "  Schedule: #{course.schedule}"
-          puts "  Description: #{course.description}"
+          puts "Name: #{podcast.name}"  "Position: #{podcast.position}"
         end
       end
     end
