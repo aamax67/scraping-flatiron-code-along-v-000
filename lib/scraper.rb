@@ -26,8 +26,8 @@ class Scraper
     def make_podcasts
       self.get_podcasts.each do |post|
         podcast = Podcast.new
-        podcast.position = pod.css(".numberImage").text.gsub(/\t/, '').strip
-        podcast.summary = pod.css("p").text.strip
+        podcast.position = post.css(".numberImage").text.gsub(/\t/, '').strip
+        podcast.summary = post.css("p").text.strip
       end
     end
 
