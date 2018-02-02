@@ -16,5 +16,6 @@ class Scraper
       podcast.summary = p.css("p").text.strip
       end
     end
-        binding.pry
   end
+
+  binding.pry
