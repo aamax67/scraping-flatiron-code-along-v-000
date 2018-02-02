@@ -11,7 +11,7 @@ class Scraper
     end
 
     def get_podcasts
-          self.get_page.css(".podcastRow")
+      self.get_page.css(".podcastRow")
     end
 
     def make_podcasts
