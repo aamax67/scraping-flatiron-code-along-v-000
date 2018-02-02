@@ -9,7 +9,7 @@ class Scraper
   def get_page
 
     doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
-
+      binding.pry
     # doc.css(".post").each do |post|
     #   course = Course.new
     #   course.title = post.css("h2").text
@@ -41,4 +41,4 @@ class Scraper
     end
   end
 
-binding.pry
+Scraper.new.get_page
