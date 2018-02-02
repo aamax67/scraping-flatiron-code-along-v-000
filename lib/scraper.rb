@@ -26,8 +26,9 @@ class Scraper
     def make_podcasts
       self.get_podcasts.each do |p|
         podcast = Podcast.new
-        podcast.position = p.css(".numberImage").text.gsub(/\t/, '').strip
-        podcast.summary = p.css("p").text.strip
+        podcast.name = doc.css("h3").text.gsub(/\t/, '').strip
+        podcast.position = doc.css(".numberImage").text.gsub(/\t/, '').strip
+        podcast.summary = doc.css("p").text.strip
       end
     end
 
@@ -40,5 +41,3 @@ class Scraper
       end
     end
   end
-
-Scraper.new.get_page
