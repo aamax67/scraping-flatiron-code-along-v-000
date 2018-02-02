@@ -10,7 +10,7 @@ class Scraper
       doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
 
       doc.css(".podcastRow").each do |post|
-        podcast = self.new
+        podcast = Podcast.new
         podcast.name = post.css("h3").text.gsub(/\t/, '').strip
         podcast.rank = post.css(".numberImage").text.gsub(/\t/, '').strip
         podcast.summary = post.css("p").text.strip
