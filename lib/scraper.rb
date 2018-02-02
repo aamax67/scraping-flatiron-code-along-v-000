@@ -11,9 +11,9 @@ class Scraper
 
       doc.css(".podcastRow").each do |post|
         podcast = Podcast.new
-        podcast.name = p.css("h3").text.gsub(/\t/, '').strip
-        podcast.rank = p.css(".numberImage").text.gsub(/\t/, '').strip
-        podcast.summary = p.css("p").text.strip
+        podcast.name = post.css("h3").text.gsub(/\t/, '').strip
+        podcast.rank = post.css(".numberImage").text.gsub(/\t/, '').strip
+        podcast.summary = post.css("p").text.strip
         end
       end
     end
