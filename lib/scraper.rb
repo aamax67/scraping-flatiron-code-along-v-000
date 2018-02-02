@@ -8,7 +8,7 @@ class Scraper
 
     def get_page
       doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
-binding.pry
+        binding.pry
       doc.css(".podcastRow").each do |post|
         podcast = Podcast.new
         podcast.name = post.css("h3").text.gsub(/\t/, '').strip
