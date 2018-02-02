@@ -7,11 +7,11 @@ class Podcast
       @@all = []
 
     def initialize
-      @@all << self
+      @@all
     end
 
     def self.all
-      @@all
+      @@all << self
     end
 
   def self.reset_all
