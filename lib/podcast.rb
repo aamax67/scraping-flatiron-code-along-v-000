@@ -1,3 +1,5 @@
+
+
 class Podcast
 
     attr_accessor :name, :position, :summary, :producer, :url
