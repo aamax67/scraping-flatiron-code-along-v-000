@@ -17,9 +17,9 @@ class Scraper
     def make_podcasts
       self.get_podcasts.each do |p|
       podcast = Podcast.new
-      podcast.name = podcastRow.css("h3").text.gsub(/\t/, '').strip
-      podcast.rank = podcastRow.css(".numberImage").text.gsub(/\t/, '').strip
-      podcast.summary = podcastRow.css("p").text.strip
+      podcast.name = p.css("h3").text.gsub(/\t/, '').strip
+      podcast.rank = p.css(".numberImage").text.gsub(/\t/, '').strip
+      podcast.summary = p.css("p").text.strip
       end
     end
 
