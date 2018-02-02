@@ -24,7 +24,7 @@ class Scraper
     end
 
 
-  def pirnt_podcasts
+  def print_podcasts
     self.make_podcasts
     Podcast.all.each do |podcast|
       if podcast.name
