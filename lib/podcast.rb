@@ -2,7 +2,7 @@
 
 class Podcast
 
-    attr_accessor :name, :position, :summary
+    attr_accessor :name, :rank, :summary
 
       @@all = []
 
