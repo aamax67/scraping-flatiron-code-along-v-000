@@ -23,5 +23,15 @@ class Scraper
       end
     end
   end
-  
+
+  def pirnt_podcasts
+    self.make_podcasts
+    Podcast.all.each do |podcast|
+      if podcast.name
+        puts "Name: #{podcast.name}"
+      end
+    end
+  end
+end
+
   Scraper.new.print_podcasts
