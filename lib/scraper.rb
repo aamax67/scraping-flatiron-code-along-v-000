@@ -22,7 +22,7 @@ class Scraper
       podcast.summary = podcastRow.css("p").text.strip
       end
     end
-  end
+
 
   def pirnt_podcasts
     self.make_podcasts
@@ -32,6 +32,7 @@ class Scraper
       end
     end
   end
+end
 
 
   Scraper.new.print_podcasts
