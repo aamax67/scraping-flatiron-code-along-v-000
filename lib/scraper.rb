@@ -6,40 +6,17 @@ require_relative './podcast.rb'
 
 class Scraper
 
-  def get_page
-
-    doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
+    def get_page
+      doc = Nokogiri::HTML(open("http://toppodcast.com/top-200-podcast/"))
       binding.pry
-    # doc.css(".post").each do |post|
-    #   course = Course.new
-    #   course.title = post.css("h2").text
-    #   course.schedule = post.css(".date").text
-    #   course.description = post.css("p").text
-    #   end
-    #   binding.pry
-    end
 
-    def get_podcasts
-      self.get_page.css(".allTopPodcasts")
-    end
-
-    def make_podcasts
-      self.get_podcasts.each do |p|
-        podcast = Podcast.new
-        podcast.name = doc.css("h3").text.gsub(/\t/, '').strip
-        podcast.position = doc.css(".numberImage").text.gsub(/\t/, '').strip
-        podcast.summary = doc.css("p").text.strip
+      doc.css(".allTopPodcasts").each do |pod|
+      podcast = Podcast.new
+      podcast.name = pod.css("h3").text.gsub(/\t/, '').strip
+      podcast.rank = pod.css(".numberImage").text.gsub(/\t/, '').strip
+      podcast.summary = pod.css("p").text.strip
+      podcast.url = doc.search("a.view_show").attr("href")
       end
     end
-
-    def print_podcasts
-      self.make_podcasts
-      Podcast.all.each do |podcast|
-        if podcast.name
-          puts "Name: #{podcast.name}"  "Position: #{podcast.position}"
-        end
-      end
-    end
+        binding.pry
   end
-
-  Scraper.new.print_podcasts
