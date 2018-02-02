@@ -1,5 +1,3 @@
-
-
 class Podcast
 
     attr_accessor :name, :rank, :summary
